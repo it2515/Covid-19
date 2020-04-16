@@ -23,15 +23,16 @@ covid_stats = api_response.json()['timelineitems']
  
 # Break out individual stats
 
-for i in covid_stats:
-    print (i)
-    del i['stat']
-   
+
 daily_deaths =[]
 total_casesL = []
 daily_cases = []
 date= []
 
+for i in covid_stats:
+    print (i)
+    del i['stat']
+   
 for c_date, info in i.items():
     print("\nDate:", c_date)
     date.append(c_date)
