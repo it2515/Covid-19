@@ -22,7 +22,7 @@ api_response = requests.get('https://api.thevirustracker.com/free-api?countryTim
 covid_stats = api_response.json()['timelineitems']
  
 # Break out individual stats
-date= []
+
 for i in covid_stats:
     print (i)
     del i['stat']
@@ -30,6 +30,7 @@ for i in covid_stats:
 daily_deaths =[]
 total_casesL = []
 daily_cases = []
+date= []
 
 for c_date, info in i.items():
     print("\nDate:", c_date)
@@ -45,11 +46,8 @@ print(daily_cases)
 print(daily_deaths) 
 print (date)
 
-
 plt.style.use('fivethirtyeight')
-
 plt.plot(date, total_casesL )
-
 plt.tight_layout()
 plt.show
 
