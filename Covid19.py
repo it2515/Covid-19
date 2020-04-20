@@ -5,17 +5,7 @@ import pandas as pd
 import requests
 import random
 from itertools import count
-# useful data
 
-
-# Get data on only confirmed cases
-#api_response = requests.get('https://covid19api.herokuapp.com/confirmed')
- 
-# Print latest data for location ID 100: California, USA
-#print(api_response.json()['latest'])
-
-
-#import requests
 
 # Request fails unless we provide a user-agent
 api_response = requests.get('https://api.thevirustracker.com/free-api?countryTimeline=US', headers={"User-Agent": "Chrome"})
@@ -50,7 +40,7 @@ print (date)
 plt.style.use('fivethirtyeight')
 plt.plot(date, total_casesL )
 plt.tight_layout()
-plt.show
+plt.show()
 
 
 
