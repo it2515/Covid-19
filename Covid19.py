@@ -1,5 +1,5 @@
 
-
+import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd        
 import requests
@@ -16,7 +16,6 @@ deaths = []
 daily_deaths =[]
 total_casesL = []
 daily_cases = []
-y = []
 z = 0
 
 
@@ -44,10 +43,7 @@ death_rate = deaths[-1]/total_casesL[-1]
 c = str(death_rate)
 print('Death rate: ' + c[1:6])
 
-for l in date :
-    l = z 
-    z = l+1
-    y.append(z)
+y = np.arange(len(date))
  
 plt.plot(y,total_casesL, label = 'Cases', marker = '.', linewidth=3  )    
 plt.plot(y,daily_cases , 'y', label = 'New Cases', linestyle = '--', )
