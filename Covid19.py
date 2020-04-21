@@ -8,7 +8,14 @@ from itertools import count
 # useful data
 
 
+# Get data on only confirmed cases
+#api_response = requests.get('https://covid19api.herokuapp.com/confirmed')
+ 
+# Print latest data for location ID 100: California, USA
+#print(api_response.json()['latest'])
 
+
+#import requests
 
 # Request fails unless we provide a user-agent
 api_response = requests.get('https://api.thevirustracker.com/free-api?countryTimeline=US', headers={"User-Agent": "Chrome"})
@@ -19,7 +26,7 @@ date= []
 for i in covid_stats:
     print (i)
     del i['stat']
-   
+deaths = []  
 daily_deaths =[]
 total_casesL = []
 daily_cases = []
@@ -33,7 +40,7 @@ for c_date, info in i.items():
     print ('New Cases:',info['new_daily_cases'])
     daily_cases.append(info['new_daily_cases'])
     daily_deaths.append(info['new_daily_deaths'])
-
+    deaths.append(info['total_deaths'])
 print(total_casesL) 
 print(daily_cases)   
 print(daily_deaths) 
@@ -45,15 +52,22 @@ for l in date :
     l = z 
     z = l+1
     y.append(z)
-plt.plot(y,total_casesL)    
-plt.plot(y,daily_cases)
-plt.plot(y, daily_deaths)
+
+print (plt.style.available)    
+plt.plot(y,total_casesL, label = 'Cases', marker = '.', linewidth=3  )    
+plt.plot(y,daily_cases , 'y', label = 'New Cases', linestyle = '--', )
+plt.plot(y, daily_deaths, 'k', label = 'New Deaths' )
+plt.plot(y, deaths, color = 'r', label = 'Deaths' ,  )  
 plt.ylabel('People')
 plt.xlabel('Days') 
-plt.title('Daliy Covid 19 Cases')
+plt.title('Daliy Covid 19 Cases (USA)')
+death_rate = deaths[-1]/total_casesL[-1]
+c = str(death_rate)
 
-
-plt.legend(['New Cases', ' New Deaths'])
+print('Death rate: ' + c[2:6])
+plt.tight_layout()
+plt.grid(True)
+plt.legend()
 plt.show()
 
 
