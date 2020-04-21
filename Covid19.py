@@ -52,7 +52,7 @@ plt.plot(y, deaths, color = 'r', label = 'Deaths' ,  )
 
 plt.ylabel('People')
 plt.xlabel('Days') 
-plt.title('Daliy Covid 19 Cases (USA)')
+plt.title('Covid 19 Cases (USA)')
 plt.tight_layout()
 plt.grid(True)
 plt.legend()
