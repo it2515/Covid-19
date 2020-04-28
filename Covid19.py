@@ -16,7 +16,7 @@ deaths = []
 daily_deaths =[]
 total_casesL = []
 daily_cases = []
-z = 0
+
 
 
 for i in covid_stats:
